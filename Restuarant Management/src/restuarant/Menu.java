@@ -6,12 +6,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 
 public class Menu implements Serializable {
-private static Scanner sc= new Scanner(System.in);
+        private static Scanner sc= new Scanner(System.in);
+         
+
 	public Table headTable=null;
-	
 	private int tableNum=0;
     private Booking firstBooking=null;
     private int bookingNum=0;
@@ -22,6 +25,9 @@ private static Scanner sc= new Scanner(System.in);
 	private FoodMenu fdm;
  
 	public static void main(String[] args) {
+		
+		
+        
 		Menu app = new Menu();
 		app.runMenu();
 		
@@ -45,32 +51,38 @@ private static Scanner sc= new Scanner(System.in);
 		System.out.println("               WELCOME");
 		System.out.println("   .....Restuarent Management System......");
 		System.out.println("*****************************************");
-
+		System.out.println("----------------------------------------");
+		System.out.println("_________MENU_________");
+		System.out.println("----------------------------------------");
+		System.out.println("  1. Veg Menu");
+		System.out.println("  2. Non-Veg Menu");
+		System.out.println("----------------------------------------");
+		
+		
 		System.out.println("****TABLE MENU****");
 		System.out.println("----------------------------------------");
-		System.out.println("  1. Add a Table");
-		System.out.println("  2. View Table");
-		//System.out.println("  3) Delete Table");
+		System.out.println("  3. Add a Table");
+		System.out.println("  4. View Table");
 		System.out.println("----------------------------------------");
 		System.out.println("****BOOKING MENU****");
 		System.out.println("----------------------------------------");
-		System.out.println("  4. Add a Booking");
-		System.out.println("  5. View Booking");
-		System.out.println("  6. Delete Booking");
+		System.out.println("  5. Add a Booking");
+		System.out.println("  6. View Booking");
+		System.out.println("  7. Delete Booking");
 		System.out.println("----------------------------------------");
-		System.out.println("  7. Add New Food Order");
-		System.out.println("  8. View Food ordered");
-		System.out.println("  9. Delete Food ordered");
+		System.out.println("  8. Add New Food Order");
+		System.out.println("  9. View Food ordered");
+		System.out.println("  10. Delete Food ordered");
 		System.out.println("-----------------------------------------");
 		System.out.println("****PURCHASE MENU****");
 		System.out.println("-----------------------------------------");
-		System.out.println("  10. Add a Purchase");
-	    System.out.println("  11. View All Purchases");
-	    System.out.println("  12. Delete Purchase");
-	    System.out.println("  13. View All Tables & Bookings");
-	    System.out.println("  14. Reset");
-	    System.out.println("  15. Check Out!");
-	    System.out.println("   0. Exit");
+		System.out.println("  11. Add a Purchase");
+	        System.out.println("  12. View All Purchases");
+	        System.out.println("  13. Delete Purchase");
+	        System.out.println("  14. View All Tables & Bookings & Orders");
+	        System.out.println("  15. Reset");
+	        System.out.println("  16. Check Out!");
+	        System.out.println("   0. Exit");
 		System.out.println("********************************************");
 		System.out.println("********************************************");
 		
@@ -86,57 +98,78 @@ private static Scanner sc= new Scanner(System.in);
 
 			switch (option) {
 			case 1:
-				addTable();
+				System.out.println("Veg Menu");
+				System.out.println("   1. Panner Masala       200/-");
+				System.out.println("   2. Dal makhani         250/-");
+				System.out.println("   3. Pakora               80/-");
+				System.out.println("   4. Kofta               180/-");
+				System.out.println("   5. Pulav               100/-");
+				System.out.println("   6. Gira Rice           120/-");
+				System.out.println("   7. Mix Veg             160/-");
+				System.out.println("   8. Roti                 45/-");
+				System.out.println("   9. Aloo Tikki          100/-");
+				System.out.println("   10.Sweet Potato         90/-");
+			
 				break;
 			case 2:
+				System.out.println("Non-Veg Menu");
+				System.out.println("   1. Grilled Chicken       250/-");
+				System.out.println("   2. Mutton Korma          350/-");
+				System.out.println("   3. Tandoori              200/-");
+				System.out.println("   4. Fish Fry              180/-");
+				System.out.println("   5. Biryani               180/-");
+				System.out.println("   6. Lemon Chicken         170/-");
+				System.out.println("   7. Egg Curry             100/-");
+				
+			
+				
+				break;
+			case 3:
+				addTable();
+				break;
+			case 4:
 				viewTables();
 				break;
-			/*case 3:
-				input.nextLine();
-				deleteTable(promptForInt("Enter Table Number to delete"));
-				break;*/
-			case 4 :
+			
+			case 5 :
 				addBooking();
 				break;
-			case 5:
+			case 6:
 				viewBookings();
 				break;
-			case 6:
+			case 7:
 				sc.nextLine();
 				deleteBookings(promptForString("Enter Customer Name to delete"));
 				break;
-			case 7:
+			case 8:
 				addNewFoodAndDrinkItem();
 				break;
-			case 8:
+			case 9:
 				viewFoodItems();
 				break;
-			case 9:
+			case 10:
 				sc.nextLine();
 				deleteFoodItems(promptForString("Enter item to delete"));
 				break;
-			case 10:
+			case 11:
 				addPurchase();
 				break;
-			case 11:
+			case 12:
 				viewAllPurchases();
 				break;
-			case 12: 
+			case 13: 
 				sc.nextLine();
 				deletePurchases(promptForString("Enter Item Purchased to delete"), firstBooking);
 				break;
-			case 13:
+			case 14:
 				viewAllTablesAndBookings();
 				break;
 			
 			case 15:
 				reset();
 				break;
-//			case 16:
-//				input.nextLine();
-//				checkOut();
-//				break;
-			case 17:
+		
+			case 16:
 				try {
 					load();
 				} catch (Exception e) {
@@ -266,10 +299,10 @@ private static Scanner sc= new Scanner(System.in);
      public void viewFoodItems()
      {		
 	  fdm = firstFdItem; 
-	  System.out.println("FoodDrink Item Details: \n========================\n");
+	  System.out.println("FOOD ITEM DETAILS: \n=====================================\n");
 		while(fdm!=null)
 			{
-			System.out.println("Number: "+ fdm.getFoodMenuNumber() +""+" \n " +"\t" + "Item Name: "+fdm.getFdMenuItem()+" \n " +"\t" + "Item Cost Cost.: "+fdm.getItemPrice());
+			System.out.println("Number: "+ fdm.getFoodMenuNumber() +""+" \n " +"\t" + "Food Item Name: "+fdm.getFdMenuItem()+" \n " +"\t" + "Food Item Cost.: "+fdm.getItemPrice());
 			fdm=fdm.next;
 					
 			}	
@@ -370,13 +403,15 @@ private static Scanner sc= new Scanner(System.in);
 	     public void viewAllTablesAndBookings() {
 				Table temp=headTable;
 				Booking temp2=firstBooking; 
+				FoodMenu temp3=firstFdItem;
 				
 				while(temp!=null && temp2!=null){
 					System.out.print("Table Details: "+" \n " +"\t" + "Table No. "+temp.getTableNumber() +" \n " +"\t" + "No. of Seats "+temp.getNumberOfSeats()+ " \n ");
 					System.out.println("Booking Details:"+" \n " +"\t" + "Booking No.: "+temp2.getbookingNumber() +" \n " +"\t" + "Customer Name: "+temp2.getCustomerName()+" \n " +
-					"\t" + "Number of People Booking: "+temp2.getNumberOfPplBooking()+" \n " +"\t" + "Table Number Booked: "+temp2.getTableNumberBooked());
+					"\t" + "Number of People Booking: "+temp2.getNumberOfPplBooking()+" \n " +"\t" + "Table Number Booked: "+temp2.getTableNumberBooked()+" \n " +"\t" + "Food Item Name: "+temp3.getFdMenuItem());
 					temp=temp.next;
-					temp2=temp2.next;	
+					temp2=temp2.next;
+					temp3=temp3.next;
 				}
 			}
 			
