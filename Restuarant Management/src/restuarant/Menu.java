@@ -10,24 +10,21 @@ import java.util.ArrayList;
 
 
 
-public class Menu implements Serializable {
-        private static Scanner sc= new Scanner(System.in);
+     public class Menu implements Serializable {
+      private static Scanner sc= new Scanner(System.in);
          
 
 	public Table headTable=null;
 	private int tableNum=0;
-    private Booking firstBooking=null;
-    private int bookingNum=0;
-    private FoodMenu firstFdItem=null;
-    private int fdMenuNum=0;
+        private Booking firstBooking=null;
+        private int bookingNum=0;
+        private FoodMenu firstFdItem=null;
+        private int fdMenuNum=0;
 	private Purchase firstPurchase = null;
-    private int purchase=0;
+        private int purchase=0;
 	private FoodMenu fdm;
  
 	public static void main(String[] args) {
-		
-		
-        
 		Menu app = new Menu();
 		app.runMenu();
 		
@@ -57,8 +54,6 @@ public class Menu implements Serializable {
 		System.out.println("  1. Veg Menu");
 		System.out.println("  2. Non-Veg Menu");
 		System.out.println("----------------------------------------");
-		
-		
 		System.out.println("****TABLE MENU****");
 		System.out.println("----------------------------------------");
 		System.out.println("  3. Add a Table");
@@ -90,8 +85,6 @@ public class Menu implements Serializable {
 		int option = sc.nextInt();
 		return option;
 	}
-
-	
 	private void runMenu() {
 		int option = mainMenu();
 		while (option != 0) {
