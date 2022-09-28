@@ -66,11 +66,9 @@ public static void main(String[] args)
 		System.out.println("______PURCHASE MENU________");
 		System.out.println("-");
 		System.out.println("  11. Add a Purchase       12. View All Purchases   13. Delete Purchase    ");
-	    System.out.println("  14. View All Tables & Bookings & Orders");
-	   // System.out.println("  15. Reset");
-	    //System.out.println("  16. Check Out!");
+	        System.out.println("  14. View All Tables & Bookings & Orders");
 		System.out.println("");
-	    System.out.println("   0. Exit");
+	        System.out.println("   0. Exit");
 		System.out.println("**************************************************************************");
 	
 		
