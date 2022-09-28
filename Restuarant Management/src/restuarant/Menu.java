@@ -8,23 +8,23 @@ import java.io.Serializable;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
-
-     public class Menu implements Serializable {
-      private static Scanner sc= new Scanner(System.in);
-         
-
-	public Table headTable=null;
-	private int tableNum=0;
-        private Booking firstBooking=null;
-        private int bookingNum=0;
-        private FoodMenu firstFdItem=null;
-        private int fdMenuNum=0;
-	private Purchase firstPurchase = null;
-        private int purchase=0;
-	private FoodMenu fdm;
+public class Menu implements Serializable
+{
+ private static Scanner sc= new Scanner(System.in);
+        
+    public Table headTable=null;
+    private int tableNum=0;
+    private Booking firstBooking=null;
+    private int bookingNum=0;
+    private FoodMenu firstFdItem=null;
+    private int fdMenuNum=0;
+    private Purchase firstPurchase = null;
+    private int purchase=0;
+    private FoodMenu fdm;
  
-	public static void main(String[] args) {
+	
+public static void main(String[] args)
+{
 		Menu app = new Menu();
 		app.runMenu();
 		
@@ -44,47 +44,42 @@ import java.util.ArrayList;
 	}
 
 	private int mainMenu() {
-		System.out.println("*****************************************");
+		System.out.println("**********************************************************************");
 		System.out.println("               WELCOME");
 		System.out.println("   .....Restuarent Management System......");
-		System.out.println("*****************************************");
-		System.out.println("----------------------------------------");
+		System.out.println("**********************************************************************");
+		System.out.println("");
 		System.out.println("_________MENU_________");
-		System.out.println("----------------------------------------");
-		System.out.println("  1. Veg Menu");
-		System.out.println("  2. Non-Veg Menu");
-		System.out.println("----------------------------------------");
-		System.out.println("****TABLE MENU****");
-		System.out.println("----------------------------------------");
-		System.out.println("  3. Add a Table");
-		System.out.println("  4. View Table");
-		System.out.println("----------------------------------------");
-		System.out.println("****BOOKING MENU****");
-		System.out.println("----------------------------------------");
-		System.out.println("  5. Add a Booking");
-		System.out.println("  6. View Booking");
-		System.out.println("  7. Delete Booking");
-		System.out.println("----------------------------------------");
-		System.out.println("  8. Add New Food Order");
-		System.out.println("  9. View Food ordered");
-		System.out.println("  10. Delete Food ordered");
-		System.out.println("-----------------------------------------");
-		System.out.println("****PURCHASE MENU****");
-		System.out.println("-----------------------------------------");
-		System.out.println("  11. Add a Purchase");
-	        System.out.println("  12. View All Purchases");
-	        System.out.println("  13. Delete Purchase");
-	        System.out.println("  14. View All Tables & Bookings & Orders");
-	        System.out.println("  15. Reset");
-	        System.out.println("  16. Check Out!");
-	        System.out.println("   0. Exit");
-		System.out.println("********************************************");
-		System.out.println("********************************************");
+		System.out.println("");
+		System.out.println("  1. Veg Menu            2. Non-Veg Menu" );
+		System.out.println("");
+		System.out.println("_________TABLE___________");
+		System.out.println("-");
+		System.out.println("  3. Add a Tabl           4. View Table");
+		System.out.println("");
+		System.out.println("________BOOKING MENU________");
+		System.out.println("");
+		System.out.println("  5. Add a Booking        6. View Booking        7. Delete Booking");
+		System.out.println("");
+		System.out.println("  8. Add New Food Order   9. View Food ordered   10. Delete Food ordered");
+		System.out.println("");
+		System.out.println("______PURCHASE MENU________");
+		System.out.println("-");
+		System.out.println("  11. Add a Purchase       12. View All Purchases   13. Delete Purchase    ");
+	    System.out.println("  14. View All Tables & Bookings & Orders");
+	   // System.out.println("  15. Reset");
+	    //System.out.println("  16. Check Out!");
+		System.out.println("");
+	    System.out.println("   0. Exit");
+		System.out.println("**************************************************************************");
+	
 		
 		System.out.print("--> ");
 		int option = sc.nextInt();
 		return option;
 	}
+
+	
 	private void runMenu() {
 		int option = mainMenu();
 		while (option != 0) {
@@ -102,7 +97,6 @@ import java.util.ArrayList;
 				System.out.println("   8. Roti                 45/-");
 				System.out.println("   9. Aloo Tikki          100/-");
 				System.out.println("   10.Sweet Potato         90/-");
-			
 				break;
 			case 2:
 				System.out.println("Non-Veg Menu");
@@ -113,9 +107,6 @@ import java.util.ArrayList;
 				System.out.println("   5. Biryani               180/-");
 				System.out.println("   6. Lemon Chicken         170/-");
 				System.out.println("   7. Egg Curry             100/-");
-				
-			
-				
 				break;
 			case 3:
 				addTable();
@@ -132,7 +123,7 @@ import java.util.ArrayList;
 				break;
 			case 7:
 				sc.nextLine();
-				deleteBookings(promptForString("Enter Customer Name to delete"));
+				deleteBookings(promptForString("Enter Customer Name to delete :"));
 				break;
 			case 8:
 				addNewFoodAndDrinkItem();
@@ -142,7 +133,7 @@ import java.util.ArrayList;
 				break;
 			case 10:
 				sc.nextLine();
-				deleteFoodItems(promptForString("Enter item to delete"));
+				deleteFoodItems(promptForString("Enter item to delete :"));
 				break;
 			case 11:
 				addPurchase();
@@ -152,31 +143,13 @@ import java.util.ArrayList;
 				break;
 			case 13: 
 				sc.nextLine();
-				deletePurchases(promptForString("Enter Item Purchased to delete"), firstBooking);
+				deletePurchases(promptForString("Enter Item Purchased to delete:"), firstBooking);
 				break;
 			case 14:
 				viewAllTablesAndBookings();
-				break;
 			
-			case 15:
-				reset();
-				break;
-		
-			case 16:
-				try {
-					load();
-				} catch (Exception e) {
-					System.out.print("Error reading from file: " + e);
-				}
-				break;
-			
-				
-			default:
-				System.out.println("Invalid option entered: " + option);
 				break;
 			}
-			
-			
 			System.out.println("\nPress any key to continue...");
 			sc.nextLine();
 			sc.nextLine(); 
@@ -185,7 +158,7 @@ import java.util.ArrayList;
 		}
 
 
-		System.out.println("Exiting... bye");
+		System.out.println("Thank You......Visite Again...");
 		System.exit(0);
 	}
 	
@@ -203,7 +176,8 @@ import java.util.ArrayList;
 			Table nt=new Table(tableNum,numberOfSeats);
 			
 			nt.next=headTable;
-			headTable=nt;			
+			headTable=nt;	
+			System.out.print("Your Table Booking successfully...... ");
 		}
 
 		
@@ -211,7 +185,7 @@ import java.util.ArrayList;
 			Table temp=headTable;
 			System.out.print("Table Details"+" \n ");
 			while(temp!=null){
-				System.out.print("\t"+"Table No. "+temp.getTableNumber()+", Seats "+temp.getNumberOfSeats()+ " \n ");
+				System.out.print("\t"+"Table No. "+temp.getTableNumber()+", Seats. "+temp.getNumberOfSeats()+ " \n ");
 				temp=temp.next;
 			}
 		}
@@ -230,6 +204,8 @@ import java.util.ArrayList;
 			Booking nb=new Booking(bookingNum,customerName,numberOfPplBooking,tableNumberBooked);
 			nb.next=firstBooking;
 			firstBooking=nb;
+			System.out.print("Booking Successfully.... ");
+			
 		 }
 
 			 public void viewBookings() {
@@ -259,7 +235,7 @@ import java.util.ArrayList;
 					else {
 						System.out.println("Item "+name+" not found.");
 					} 
-
+					System.out.print("Delete Booking Successfully...... ");
 					}
 			
 
@@ -271,6 +247,8 @@ import java.util.ArrayList;
 				System.out.print("Please Enter Price: "+ " \n ");
 				double itemPrice= sc.nextInt();
 				addNewFoodAndDrinkItem(fdMenuItem,itemPrice);
+				
+				System.out.print(" Food Added Successfully......");
 			}
 	
 			
@@ -317,6 +295,7 @@ import java.util.ArrayList;
 				else {
 					System.out.println("Item "+item+" not found.");
 				} 
+				System.out.print("Deleted FoodItem Successfully...... ");
 
 				}	
 			
@@ -402,14 +381,11 @@ import java.util.ArrayList;
 					System.out.print("Table Details: "+" \n " +"\t" + "Table No. "+temp.getTableNumber() +" \n " +"\t" + "No. of Seats "+temp.getNumberOfSeats()+ " \n ");
 					System.out.println("Booking Details:"+" \n " +"\t" + "Booking No.: "+temp2.getbookingNumber() +" \n " +"\t" + "Customer Name: "+temp2.getCustomerName()+" \n " +
 					"\t" + "Number of People Booking: "+temp2.getNumberOfPplBooking()+" \n " +"\t" + "Table Number Booked: "+temp2.getTableNumberBooked()+" \n " +"\t" + "Food Item Name: "+temp3.getFdMenuItem());
+				
+					
 					temp=temp.next;
 					temp2=temp2.next;
 					temp3=temp3.next;
 				}
 			}
-			
-		 public void reset() {
-		  headTable=null;
-			System.out.println("Reset Successful");
-		 }
     }
